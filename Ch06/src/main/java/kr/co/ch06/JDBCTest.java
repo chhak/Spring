@@ -17,6 +17,8 @@ public class JDBCTest {
 		UserDAO dao = (UserDAO) ctx.getBean("userDAO");
 		
 		dao.insertUser();
+		dao.updateUser();
+		dao.deleteUser();
 		
 		System.out.println("프로그램 종료...");
 	}
