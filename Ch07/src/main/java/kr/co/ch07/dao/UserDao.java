@@ -1,5 +1,7 @@
 package kr.co.ch07.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,12 +20,19 @@ public class UserDao {
 		String sql = "INSERT INTO `MEMBER` VALUES (?,?,?,?,?, NOW())";
 		Object[] params = {vo.getUid(), vo.getName(), vo.getHp(), vo.getPos(), vo.getDep()};
 		
-		jdbc.update(sql, params);
-		
+		jdbc.update(sql, params);		
 	}
 	
 	public void selectUser() {}
-	public void selectUsers() {}
+	
+	public List<UserVO> selectUsers() {
+		
+		String sql = "SELECT * FROM `MEMBER`";
+		List<UserVO> users = jdbc.query(sql, new UserRowMapper());
+		
+		return users;		
+	}
+	
 	public void updateUser() {}
 	public void deleteUser() {}
 }

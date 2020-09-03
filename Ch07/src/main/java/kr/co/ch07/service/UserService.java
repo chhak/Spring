@@ -1,5 +1,7 @@
 package kr.co.ch07.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -17,9 +19,13 @@ public class UserService {
 		dao.insertUser(vo);
 	}
 	
-	
 	public void selectUser() {}
-	public void selectUsers() {}
+	
+	public List<UserVO> selectUsers() {
+		return dao.selectUsers();
+	}
+	
 	public void updateUser() {}
+	
 	public void deleteUser() {}
 }
