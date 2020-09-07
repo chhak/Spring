@@ -15,11 +15,12 @@
 			`rdate`=NOW();			
 	</insert>
 	
-	<!--
-	<select id="SELECT_MEMBER" resultType="kr.co.ch08.vo.MemberVO">
+	<select id="SELECT_MEMBERS" resultType="kr.co.ch08.vo.MemberVO">
+		SELECT * FROM `MEMBER`;
 	</select>
 	
-	<select id="SELECT_MEMBERS" resultType="kr.co.ch08.vo.MemberVO">
+	<!--
+	<select id="SELECT_MEMBER" resultType="kr.co.ch08.vo.MemberVO">
 	</select>
 	
 	<update id="UPDATE_MEMBER">

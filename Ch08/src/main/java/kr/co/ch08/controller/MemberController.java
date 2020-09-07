@@ -1,8 +1,11 @@
 package kr.co.ch08.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,6 +29,16 @@ public class MemberController {
 		service.insertMember(vo);
 		
 		return "/member/register";
+	}
+	
+	@RequestMapping("/member/list")
+	public String list(Model model) {
+		
+		List<MemberVO> members = service.selectMembers();
+		
+		model.addAttribute("members", members);
+		
+		return "/member/list";
 	}
 	
 }

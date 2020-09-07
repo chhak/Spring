@@ -1,5 +1,7 @@
 package kr.co.ch08.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -18,7 +20,11 @@ public class MemberDao {
 	}
 	
 	public void selectMember() {}
-	public void selectMembers() {}
+	
+	public List<MemberVO> selectMembers() {
+		return mybatis.selectList("mapper.member.SELECT_MEMBERS");
+	}
+	
 	public void updateMember() {}
 	public void deleteMember() {}	
 }
