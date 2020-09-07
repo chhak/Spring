@@ -8,7 +8,9 @@
 		INSERT INTO `USER3` VALUES (#{uid}, #{name}, #{hp}, #{age});		
 	</insert>
 	
-	<select id="SELECT_USER"></select>
+	<select id="SELECT_USER" resultType="kr.co.ch08.vo.UserVO">
+		SELECT * FROM `USER3` WHERE `uid`=#{uid};
+	</select>
 	
 	<select id="SELECT_USERS" resultType="kr.co.ch08.vo.UserVO">
 		SELECT * FROM `USER3`;

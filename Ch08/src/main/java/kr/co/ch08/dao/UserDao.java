@@ -30,8 +30,8 @@ public class UserDao {
 		mybatis.insert("mapper.user.INSERT_USER", vo);
 	}
 	
-	public UserVO selectUser() {
-		return null;
+	public UserVO selectUser(String uid) {
+		return mybatis.selectOne("mapper.user.SELECT_USER", uid);
 	}
 	
 	public List<UserVO> selectUsers() {
@@ -46,8 +46,12 @@ public class UserDao {
 		return users;
 	}	
 	
-	public void updateUser() {}
+	public void updateUser(UserVO vo) {
+		mybatis.update("mapper.user.UPDATE_USER", vo);
+	}
 	
-	public void deleteUser() {}
+	public void deleteUser(String uid) {
+		mybatis.delete("mapper.user.DELETE_USER", uid);
+	}
 	
 }

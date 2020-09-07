@@ -41,8 +41,29 @@ public class UserController {
 	}
 	
 	@RequestMapping("/user/modify")
-	public String modify() {
+	public String modify(String uid, Model model) {
+		
+		UserVO user = service.selectUser(uid);
+		model.addAttribute("user", user);
+		
 		return "/user/modify";
+	}
+	
+	@RequestMapping(value = "/user/modify", method = RequestMethod.POST)
+	public String modify(UserVO vo) {
+		
+		service.updateUser(vo);
+		
+		return "redirect:/user/list";
+	}
+	
+	
+	@RequestMapping("/user/delete")
+	public String delete(String uid) {
+		
+		service.deleteUser(uid);
+				
+		return "redirect:/user/list";
 	}
 	
 }
