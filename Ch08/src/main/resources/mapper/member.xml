@@ -19,13 +19,19 @@
 		SELECT * FROM `MEMBER`;
 	</select>
 	
-	<!--
+	
 	<select id="SELECT_MEMBER" resultType="kr.co.ch08.vo.MemberVO">
+		SELECT * FROM `MEMBER` WHERE `uid`=#{uid};
 	</select>
 	
 	<update id="UPDATE_MEMBER">
+		UPDATE `MEMBER` SET 
+			`name`=#{name},
+			`hp`=#{hp},
+			`pos`=#{pos},
+			`dep`=#{dep} WHERE `uid`=#{uid};		
 	</update>
-	
+	<!--
 	<delete id="DELETE_MEMBER">
 	</delete>
 	-->

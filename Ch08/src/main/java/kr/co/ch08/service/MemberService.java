@@ -19,12 +19,18 @@ public class MemberService {
 		dao.insertMember(vo);
 	}
 	
-	public void selectMember() {}
+	public MemberVO selectMember(String uid) {
+		return dao.selectMember(uid);
+	}
 	
 	public List<MemberVO> selectMembers() {
 		return dao.selectMembers();
 	}
-	public void updateMember() {}
+	
+	public void updateMember(MemberVO vo) {
+		dao.updateMember(vo);
+	}
+	
 	public void deleteMember() {}	
 	
 }
