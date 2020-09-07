@@ -24,7 +24,7 @@
 				<td>${user.hp}</td>
 				<td>${user.age}</td>
 				<td>
-					<a href="#">수정</a>
+					<a href="/ch08/user/modify">수정</a>
 					<a href="#">삭제</a>
 				</td>
 			</tr>

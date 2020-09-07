@@ -9,8 +9,21 @@
 	</insert>
 	
 	<select id="SELECT_USER"></select>
-	<select id="SELECT_USERS"></select>
-	<update id="UPDATE_USER"></update>
-	<delete id="DELETE_USER"></delete>
+	
+	<select id="SELECT_USERS" resultType="kr.co.ch08.vo.UserVO">
+		SELECT * FROM `USER3`;
+	</select>
+	
+	<update id="UPDATE_USER">
+		UPDATE `USER3` SET		
+		`name`=#{name},
+		`hp`=#{hp},
+		`age`=#{age} 
+		WHERE `uid`=#{uid};		
+	</update>
+	
+	<delete id="DELETE_USER">
+		DELETE FROM `USER3` WHERE `uid`=#{uid};
+	</delete>
 	
 </mapper>

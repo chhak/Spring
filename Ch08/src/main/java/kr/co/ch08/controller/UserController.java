@@ -40,5 +40,9 @@ public class UserController {
 		return "/user/list";
 	}
 	
+	@RequestMapping("/user/modify")
+	public String modify() {
+		return "/user/modify";
+	}
 	
 }

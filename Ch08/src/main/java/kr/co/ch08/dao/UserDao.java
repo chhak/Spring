@@ -36,14 +36,18 @@ public class UserDao {
 	
 	public List<UserVO> selectUsers() {
 		
-		String sql = "SELECT * FROM `USER3`";
+		// Spring jdbc 방식
+		//String sql = "SELECT * FROM `USER3`";		
+		//List<UserVO> users = jdbc.query(sql, new UserRowMapper());
 		
-		List<UserVO> users = jdbc.query(sql, new UserRowMapper());
+		// Mybatis 방식
+		List<UserVO> users = mybatis.selectList("mapper.user.SELECT_USERS");
 		
 		return users;
 	}	
 	
 	public void updateUser() {}
+	
 	public void deleteUser() {}
 	
 }
