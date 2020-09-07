@@ -31,6 +31,8 @@ public class MemberService {
 		dao.updateMember(vo);
 	}
 	
-	public void deleteMember() {}	
+	public void deleteMember(String uid) {
+		dao.deleteMember(uid);
+	}	
 	
 }

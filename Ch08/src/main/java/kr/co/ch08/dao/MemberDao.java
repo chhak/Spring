@@ -31,5 +31,7 @@ public class MemberDao {
 		mybatis.update("mapper.member.UPDATE_MEMBER", vo);
 	}
 	
-	public void deleteMember() {}	
+	public void deleteMember(String uid) {
+		mybatis.delete("mapper.member.DELETE_MEMBER", uid);
+	}	
 }

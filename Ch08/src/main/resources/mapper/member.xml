@@ -31,9 +31,9 @@
 			`pos`=#{pos},
 			`dep`=#{dep} WHERE `uid`=#{uid};		
 	</update>
-	<!--
+	
 	<delete id="DELETE_MEMBER">
+		DELETE FROM `MEMBER` WHERE `uid`=#{uid};
 	</delete>
-	-->
 	
 </mapper>

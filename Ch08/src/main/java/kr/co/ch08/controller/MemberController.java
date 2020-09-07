@@ -55,4 +55,13 @@ public class MemberController {
 		service.updateMember(vo);
 		return "redirect:/member/list";
 	}
+	
+	
+	@GetMapping("/member/delete")
+	public String delete(String uid) {
+		
+		service.deleteMember(uid);
+		
+		return "redirect:/member/list";
+	}
 }
