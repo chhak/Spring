@@ -28,5 +28,21 @@ public class UserDao {
 	public TermsVO selectTerms() {
 		return mybatis.selectOne("mapper.user.SELECT_TERMS");
 	}
+	
+	public int selectUserCount(String uid) {
+		return mybatis.selectOne("mapper.user.SELECT_USER_COUNT", uid); 
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

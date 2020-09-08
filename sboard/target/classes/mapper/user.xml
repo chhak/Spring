@@ -23,6 +23,11 @@
 			`rdate`=NOW();		
 	</insert>
 
+	<select id="SELECT_USER_COUNT" resultType="int">
+		SELECT COUNT(*) FROM `BOARD_MEMBER`
+		WHERE `uid`=#{uid};
+	</select>
+
 	<!-- 
 	<insert id="INSERT_USER">
 		INSERT INTO `USER3` VALUES (#{uid}, #{name}, #{hp}, #{age});		
