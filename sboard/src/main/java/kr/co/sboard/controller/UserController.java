@@ -1,6 +1,7 @@
 package kr.co.sboard.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,9 +39,13 @@ public class UserController {
 	}
 	
 	@PostMapping("/user/register")
-	public String register(UserVO vo) {
+	public String register(UserVO vo, HttpServletRequest req) {
 		
-		return "/user/register";
+		vo.setRegip(req.getRemoteAddr());
+		
+		service.insertUser(vo);
+		
+		return "redirect:/user/login";
 	}
 	
 }

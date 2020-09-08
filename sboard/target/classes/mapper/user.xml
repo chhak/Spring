@@ -11,12 +11,11 @@
 	<insert id="INSERT_USER">
 		INSERT INTO `BOARD_MEMBER` SET 
 			`uid`=#{uid},		
-			`pass`=PASSWORD(#{pass}),		
+			`pass`=PASSWORD(#{pass1}),		
 			`name`=#{name},		
 			`nick`=#{nick},		
 			`email`=#{email},		
 			`hp`=#{hp},		
-			`grade`=#{grade},		
 			`zip`=#{zip},		
 			`addr1`=#{addr1},		
 			`addr2`=#{addr2},		
