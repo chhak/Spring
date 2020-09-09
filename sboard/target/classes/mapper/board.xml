@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.board">
 
-	<insert id="INSERT_MEMBER">
+	<insert id="INSERT_BOARD">
 		INSERT INTO `BOARD_ARTICLE` SET
 			`title`=#{title},
 			`content`=#{content},
