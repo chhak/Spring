@@ -27,6 +27,11 @@
 		SELECT COUNT(*) FROM `BOARD_MEMBER`
 		WHERE `uid`=#{uid};
 	</select>
+	
+	<select id="SELECT_USER" resultType="kr.co.sboard.vo.UserVO">
+		SELECT * FROM `BOARD_MEMBER` 
+		WHERE `uid`=#{uid} AND `pass`=PASSWORD(#{pass});
+	</select>
 
 	<!-- 
 	<insert id="INSERT_USER">

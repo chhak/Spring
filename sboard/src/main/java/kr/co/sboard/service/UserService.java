@@ -14,7 +14,10 @@ public class UserService {
 	@Inject
 	private UserDao dao;
 	
-	public void selectUser() {}
+	public UserVO selectUser(UserVO vo) {
+		return dao.selectUser(vo);
+	}
+	
 	public void selectUsers() {}
 	
 	public void insertUser(UserVO vo) {
