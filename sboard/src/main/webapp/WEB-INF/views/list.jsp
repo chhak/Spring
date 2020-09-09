@@ -26,9 +26,9 @@
                     </tr>
                     <c:forEach var="article" items="${articles}">
 	                    <tr>
-	                        <td>${article.seq}</td>
+	                        <td>${count=count-1}</td>
 	                        <td><a href="#">${article.title}</a>&nbsp;[${article.comment}]</td>
-	                        <td>${article.uid}</td>
+	                        <td>${article.nick}</td>
 	                        <td>${article.rdate.substring(2, 10)}</td>
 	                        <td>${article.hit}</td>
 	                    </tr>
@@ -39,9 +39,9 @@
             <!-- 페이지 네비게이션 -->
             <div class="paging">
                 <a href="#" class="prev">이전</a>
-                <a href="#" class="num current">1</a>                
-                <a href="#" class="num">2</a>                
-                <a href="#" class="num">3</a>                
+                <c:forEach var="i" begin="1" end="${pageEnd}">
+                	<a href="/sboard/list?pg=${i}" class="num ${currentPg == i ? 'current':''}">${i}</a>
+				</c:forEach>     
                 <a href="#" class="next">다음</a>
             </div>
 

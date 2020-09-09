@@ -20,10 +20,20 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/list")
-	public String list(Model model) {
+	public String list(Model model, String pg) {
 		
-		List<BoardVO> articles = service.selectBoards();
+		int start = service.getLimitStart(pg);
+		int total = service.selectCountBoard();
+		int pageEnd = service.getPageEnd(total);
+		int count = service.getListCount(total, start);
+		
+		List<BoardVO> articles = service.selectBoards(start);
+		
 		model.addAttribute("articles", articles);
+		model.addAttribute("pageEnd", pageEnd);
+		model.addAttribute("currentPg", pg);
+		model.addAttribute("count", count);
+		
 		
 		return "/list";
 	}

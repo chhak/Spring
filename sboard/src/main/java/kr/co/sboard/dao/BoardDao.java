@@ -20,11 +20,16 @@ public class BoardDao {
 	
 	public void selectBoard() {}
 	
-	public List<BoardVO> selectBoards() {
-		return mybatis.selectList("mapper.board.SELECT_BOARDS");
+	public List<BoardVO> selectBoards(int start) {
+		return mybatis.selectList("mapper.board.SELECT_BOARDS", start);
 	}
 	
 	public void updateBoard() {}
 	public void deleteBoard() {}
+	
+	public int selectCountBoard() {
+		return mybatis.selectOne("mapper.board.SELECT_COUNT_BOARD");
+	}
+	
 	
 }
