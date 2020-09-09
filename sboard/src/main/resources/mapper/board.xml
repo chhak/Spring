@@ -13,6 +13,10 @@
 			`rdate`=NOW();			
 	</insert>
 	
+	<select id="SELECT_BOARDS" resultType="kr.co.sboard.vo.BoardVO">
+		SELECT * FROM `BOARD_ARTICLE`
+		WHERE `parent`=0;
+	</select>
 	
 	<!-- 
 	

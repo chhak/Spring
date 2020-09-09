@@ -1,9 +1,12 @@
 package kr.co.sboard.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -17,7 +20,11 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/list")
-	public String list() {
+	public String list(Model model) {
+		
+		List<BoardVO> articles = service.selectBoards();
+		model.addAttribute("articles", articles);
+		
 		return "/list";
 	}
 	

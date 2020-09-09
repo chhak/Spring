@@ -1,5 +1,7 @@
 package kr.co.sboard.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,7 +19,11 @@ public class BoardDao {
 	}
 	
 	public void selectBoard() {}
-	public void selectBoards() {}
+	
+	public List<BoardVO> selectBoards() {
+		return mybatis.selectList("mapper.board.SELECT_BOARDS");
+	}
+	
 	public void updateBoard() {}
 	public void deleteBoard() {}
 	

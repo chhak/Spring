@@ -29,6 +29,12 @@ public class UserController {
 		return "/user/login";
 	}
 	
+	@GetMapping("/user/logout")
+	public String logout(HttpSession sess) {
+		sess.invalidate();
+		return "redirect:/user/login";
+	}
+	
 	@PostMapping("/user/login")
 	public String login(HttpSession sess, UserVO vo) {
 		
@@ -44,10 +50,8 @@ public class UserController {
 	
 	@GetMapping("/user/terms")
 	public String terms(Model model) {
-		
 		TermsVO vo = service.selectTerms();
 		model.addAttribute(vo);
-		
 		return "/user/terms";
 	}
 	
