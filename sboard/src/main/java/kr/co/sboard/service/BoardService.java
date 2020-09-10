@@ -30,6 +30,10 @@ public class BoardService {
 		dao.insertFile(fvo);
 	}
 	
+	public BoardVO selectBoard(int seq) {
+		return dao.selectBoard(seq);
+	}
+	
 	public List<BoardVO> selectBoards(int start) {
 		return dao.selectBoards(start);
 	}

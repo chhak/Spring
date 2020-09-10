@@ -69,7 +69,11 @@ public class BoardController {
 	}
 	
 	@GetMapping("/view")
-	public String view() {
+	public String view(int seq, Model model) {
+		
+		BoardVO vo = service.selectBoard(seq);
+		
+		model.addAttribute(vo);
 		return "/view";
 	}
 	

@@ -16,16 +16,18 @@ public class BoardDao {
 	private SqlSessionTemplate mybatis;
 	
 	public int insertBoard(BoardVO vo) {
-		// 글을 insert 한 후 바로 해당 글번호 리턴
-		int seq = mybatis.insert("mapper.board.INSERT_BOARD", vo);
-		return seq;
+		// 글을 insert 수행 후 해당 테이블 행의 seq값을 vo객체 seq멤버에 저장 
+		mybatis.insert("mapper.board.INSERT_BOARD", vo);
+		return vo.getSeq();
 	}
 	
 	public void insertFile(FileVO fvo) {
 		mybatis.insert("mapper.board.INSERT_FILE", fvo);
 	}
 	
-	public void selectBoard() {}
+	public BoardVO selectBoard(int seq) {
+		return mybatis.selectOne("mapper.board.SELECT_BOARD", seq);
+	}
 	
 	public List<BoardVO> selectBoards(int start) {
 		return mybatis.selectList("mapper.board.SELECT_BOARDS", start);
