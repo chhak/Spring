@@ -9,6 +9,7 @@
 			`title`=#{title},
 			`content`=#{content},
 			`uid`=#{uid},
+			`file`=#{file},
 			`regip`=#{regip},
 			`rdate`=NOW();			
 	</insert>
@@ -23,7 +24,7 @@
 	
 	<select id="SELECT_BOARDS" resultType="kr.co.sboard.vo.BoardVO">
 		SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a
-		JOIN `BOARD_MEMBER` AS b ON	a.uid = b.uid
+		JOIN `JBOARD_MEMBER` AS b ON	a.uid = b.uid
 		WHERE `parent`=0 
 		ORDER BY `seq` DESC
 		LIMIT #{start}, 10;		

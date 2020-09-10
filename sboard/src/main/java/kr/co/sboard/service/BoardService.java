@@ -71,8 +71,7 @@ public class BoardService {
 	// 파일 업로드
 	public FileVO fileUpload(HttpServletRequest req, MultipartFile file, int seq) {
 		
-		String path = req.getSession().getServletContext().getRealPath("/");
-		path += "resources/files";
+		String path = req.getSession().getServletContext().getRealPath("/resources/files/");
 		
 		if(!file.isEmpty()) {
 			// 파일 첨부 했을때
