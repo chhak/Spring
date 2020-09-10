@@ -20,7 +20,7 @@
                 <tr>
                     <td>첨부파일</td>
                     <td>
-                        <a href="#">${boardVO.oldName}</a>
+                        <a href="/sboard/file/download?newName=${boardVO.newName}&oldName=${boardVO.oldName}">${boardVO.oldName}</a>
                         <span>${boardVO.download}회 다운로드</span>
                     </td>
                 </tr>
