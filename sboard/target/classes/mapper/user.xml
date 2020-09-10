@@ -5,11 +5,11 @@
 <mapper namespace="mapper.user">
 
 	<select id="SELECT_TERMS" resultType="kr.co.sboard.vo.TermsVO">
-		SELECT * FROM `BOARD_TERMS`;
+		SELECT * FROM `JBOARD_TERMS`;
 	</select>
 	
 	<insert id="INSERT_USER">
-		INSERT INTO `BOARD_MEMBER` SET 
+		INSERT INTO `JBOARD_MEMBER` SET 
 			`uid`=#{uid},		
 			`pass`=PASSWORD(#{pass1}),		
 			`name`=#{name},		
@@ -24,12 +24,12 @@
 	</insert>
 
 	<select id="SELECT_USER_COUNT" resultType="int">
-		SELECT COUNT(*) FROM `BOARD_MEMBER`
+		SELECT COUNT(*) FROM `JBOARD_MEMBER`
 		WHERE `uid`=#{uid};
 	</select>
 	
 	<select id="SELECT_USER" resultType="kr.co.sboard.vo.UserVO">
-		SELECT * FROM `BOARD_MEMBER` 
+		SELECT * FROM `JBOARD_MEMBER` 
 		WHERE `uid`=#{uid} AND `pass`=PASSWORD(#{pass});
 	</select>
 

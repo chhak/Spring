@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.sboard.vo.BoardVO;
+import kr.co.sboard.vo.FileVO;
 
 @Repository
 public class BoardDao {
@@ -14,8 +15,14 @@ public class BoardDao {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public void insertBoard(BoardVO vo) {
-		mybatis.insert("mapper.board.INSERT_BOARD", vo);
+	public int insertBoard(BoardVO vo) {
+		// 글을 insert 한 후 바로 해당 글번호 리턴
+		int seq = mybatis.insert("mapper.board.INSERT_BOARD", vo);
+		return seq;
+	}
+	
+	public void insertFile(FileVO fvo) {
+		mybatis.insert("mapper.board.INSERT_FILE", fvo);
 	}
 	
 	public void selectBoard() {}
