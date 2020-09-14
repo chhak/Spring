@@ -15,7 +15,7 @@
            </tr>
            <tr>
                <td>1</td>
-               <td><a href="/farmstory/board/view?group=${group}">제목입니다.</a>&nbsp;[3]</td>
+               <td><a href="/farmstory/board/view?group=${group}&cate=${cate}">제목입니다.</a>&nbsp;[3]</td>
                <td>길동</td>
                <td>20-09-14</td>
                <td>12</td>
@@ -31,7 +31,7 @@
    </div>
 
    <!-- 글쓰기 버튼 -->
-    <a href="/farmstory/board/write?group=${group}" class="btnWrite">글쓰기</a>
+    <a href="/farmstory/board/write?group=${group}&cate=${cate}" class="btnWrite">글쓰기</a>
 </section>
 <%@ include file="./inc/_aside_tail.jsp" %>
 <%@ include file="../_footer.jsp" %>

@@ -22,7 +22,7 @@
                 </tr>
             </table>
             <div>
-                <a href="/farmstory/board/view?group=${group}" class="btnCancel">취소</a>
+                <a href="/farmstory/board/view?group=${group}&cate=${cate}" class="btnCancel">취소</a>
                 <input type="submit"  class="btnWrite" value="수정완료">
             </div>
         </form>

@@ -27,8 +27,8 @@
     </table>
     <div>
         <a href="#" class="btnDelete">삭제</a>
-        <a href="/farmstory/board/modify?group=${group}" class="btnModify">수정</a>
-        <a href="/farmstory/board/list?group=${group}"   class="btnList">목록</a>
+        <a href="/farmstory/board/modify?group=${group}&cate=${cate}" class="btnModify">수정</a>
+        <a href="/farmstory/board/list?group=${group}&cate=${cate}"   class="btnList">목록</a>
     </div>  
     
     <!-- 댓글리스트 -->
