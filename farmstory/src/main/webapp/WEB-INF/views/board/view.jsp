@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../_header.jsp" %>
+<jsp:include page="./inc/_aside_${group}.jsp"/>
 <section id="board" class="view">
     <h3>글보기</h3>
     <table>
@@ -12,7 +13,7 @@
         <tr>
             <td>첨부파일</td>
             <td>
-                <a href="/farmstory/file/download?newName=${boardVO.newName}&oldName=${boardVO.oldName}">${boardVO.oldName}</a>
+                <a href="#">${boardVO.oldName}</a>
                 <span>${boardVO.download}회 다운로드</span>
             </td>
         </tr>
@@ -25,9 +26,9 @@
         </tr>
     </table>
     <div>
-        <a href="/sboard/delete" class="btnDelete">삭제</a>
-        <a href="/sboard/modify" class="btnModify">수정</a>
-        <a href="/sboard/list"   class="btnList">목록</a>
+        <a href="#" class="btnDelete">삭제</a>
+        <a href="/farmstory/board/modify?group=${group}" class="btnModify">수정</a>
+        <a href="/farmstory/board/list?group=${group}"   class="btnList">목록</a>
     </div>  
     
     <!-- 댓글리스트 -->
@@ -45,7 +46,7 @@
             </div>
         </article>
         <p class="empty">
-            등록된 댓글이 없습니다.
+			등록된 댓글이 없습니다.
         </p>
     </section>
 
@@ -60,6 +61,6 @@
             </div>
         </form>
     </section>
-
 </section>
+<%@ include file="./inc/_aside_tail.jsp" %>
 <%@ include file="../_footer.jsp" %>
