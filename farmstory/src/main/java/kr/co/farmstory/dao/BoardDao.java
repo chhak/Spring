@@ -40,4 +40,10 @@ public class BoardDao {
 	public void deleteBoard() {}
 	
 	
+	
+	public List<BoardVO> selectLatest(String cate) {
+		return mybatis.selectList("mapper.board.SELECT_LATEST", cate);
+	}
+	
+	
 }

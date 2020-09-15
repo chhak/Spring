@@ -32,6 +32,10 @@ public class BoardService {
 	public void updateBoard() {}
 	public void deleteBoard() {}
 	
+	public List<BoardVO> selectLatest(String cate) {
+		return dao.selectLatest(cate);
+	}
+	
 	// Limit start °è»ê
 	public int getLimitStart(String pg) {
 		if(pg == null) {

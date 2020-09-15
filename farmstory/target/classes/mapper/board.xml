@@ -15,6 +15,13 @@
 	<select id="SELECT_COUNT_BOARD" resultType="int">
 		SELECT COUNT(*) FROM `JBOARD_ARTICLE` WHERE `parent`=0 AND `cate`=#{cate};
 	</select>
+	
+	<select id="SELECT_LATEST" resultType="kr.co.farmstory.vo.BoardVO">
+		SELECT * FROM `JBOARD_ARTICLE` 
+		WHERE `parent`=0 AND `cate`=#{cate} 
+		ORDER BY `rdate` DESC 
+		LIMIT 5;		
+	</select>
 
 	<!--
 	<select id="SELECT_MEMBERS">
