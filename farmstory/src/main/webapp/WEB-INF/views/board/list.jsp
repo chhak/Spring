@@ -13,13 +13,15 @@
                <th>날짜</th>
                <th>조회</th>
            </tr>
-           <tr>
-               <td>1</td>
-               <td><a href="/farmstory/board/view?group=${group}&cate=${cate}">제목입니다.</a>&nbsp;[3]</td>
-               <td>길동</td>
-               <td>20-09-14</td>
-               <td>12</td>
-           </tr>
+           <c:forEach var="board" items="${boards}">
+	           <tr>
+	               <td>${board.seq}</td>
+	               <td><a href="/farmstory/board/view?group=${group}&cate=${cate}">${board.title}</a>&nbsp;[${board.comment}]</td>
+	               <td>${board.uid}</td>
+	               <td>${board.rdate.substring(2, 10)}</td>
+	               <td>${board.hit}</td>
+	           </tr>
+           </c:forEach>
        </table>
    </article>
 
