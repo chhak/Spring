@@ -25,14 +25,21 @@ public class BoardController {
 	}
 	
 	@GetMapping("/board/list")
-	public String list(String group, String cate, Model model) {
+	public String list(String group, String cate, String pg, Model model) {
 		
-		List<BoardVO> boards = service.selectBoards(cate);
+		int start = service.getLimitStart(pg);
+		int total = service.selectCountBoard(cate);
+		int pageEnd = service.getPageEnd(total);
+		int count = service.getListCount(total, start);
 		
+		List<BoardVO> boards = service.selectBoards(start, cate);
 		
 		model.addAttribute("group", group);
 		model.addAttribute("cate", cate);
 		model.addAttribute("boards", boards);
+		model.addAttribute("pageEnd", pageEnd);
+		model.addAttribute("currentPg", pg);
+		model.addAttribute("count", count);
 		
 		return "/board/list";
 	}

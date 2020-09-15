@@ -15,7 +15,7 @@
            </tr>
            <c:forEach var="board" items="${boards}">
 	           <tr>
-	               <td>${board.seq}</td>
+	               <td>${count=count-1}</td>
 	               <td><a href="/farmstory/board/view?group=${group}&cate=${cate}">${board.title}</a>&nbsp;[${board.comment}]</td>
 	               <td>${board.uid}</td>
 	               <td>${board.rdate.substring(2, 10)}</td>
@@ -28,7 +28,9 @@
    <!-- 페이지 네비게이션 -->
    <div class="paging">
 		<a href="#" class="prev">이전</a>
-		<a href="/farmstory/list?pg=${i}" class="num ${currentPg == i ? 'current':''}">${i}</a>
+		<c:forEach var="i" begin="1" end="${pageEnd}">
+		<a href="/farmstory/board/list?group=${group}&cate=${cate}&pg=${i}" class="num ${currentPg == i ? 'current':''}">${i}</a>
+		</c:forEach>
 		<a href="#" class="next">다음</a>
    </div>
 

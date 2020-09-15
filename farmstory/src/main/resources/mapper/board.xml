@@ -5,8 +5,15 @@
 <mapper namespace="mapper.board">
 
 	<select id="SELECT_BOARDS" resultType="kr.co.farmstory.vo.BoardVO">
-		SELECT * FROM `JBOARD_ARTICLE`
-		WHERE `cate`=#{cate} AND `parent`='0';
+		SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a
+		JOIN `JBOARD_MEMBER` AS b ON	a.uid = b.uid
+		WHERE `parent`=0 AND `cate`=#{cate}
+		ORDER BY `seq` DESC
+		LIMIT #{start}, 10;
+	</select>
+	
+	<select id="SELECT_COUNT_BOARD" resultType="int">
+		SELECT COUNT(*) FROM `JBOARD_ARTICLE` WHERE `parent`=0 AND `cate`=#{cate};
 	</select>
 
 	<!--
