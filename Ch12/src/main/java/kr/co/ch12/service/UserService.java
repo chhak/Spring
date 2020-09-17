@@ -29,6 +29,20 @@ public class UserService {
 		return repo.findAll();
 	}
 	
+
+	public List<UserVo> selectUsersOrderBy(String sort) {
+		
+		List<UserVo> users = null;
+		
+		if(sort.equals("asc")) {
+			users = repo.findUserVoByOrderByAgeAsc();
+		}else {
+			users = repo.findUserVoByOrderByAgeDesc();
+		}
+		
+		return users;
+	}
+	
 	public void updateUser(UserVo vo) {
 		// update USER3 set name=?, hp=?, age=? where uid=? 수행
 		repo.save(vo);
