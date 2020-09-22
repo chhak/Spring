@@ -6,7 +6,12 @@
 <mapper namespace="kr.co.kmarket.admin.dao.AdminProductDao">
 
 	<select id="selectProducts" resultType="kr.co.kmarket.vo.ProductsVo">
-		SELECT * FROM `km_products`;
+		SELECT * FROM `km_products` LIMIT #{start}, 10;
+	</select>
+	
+	
+	<select id="selectCountProducts" resultType="int">
+		SELECT COUNT(*) FROM `km_products`;
 	</select>
 
 	<!-- 

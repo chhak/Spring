@@ -17,10 +17,16 @@ public class AdminProductController {
 	private AdminProductService service;
 	
 	@GetMapping("/admin/product/list")
-	public String list(Model model) {
+	public String list(Model model, String pg) {
 		
-		List<ProductsVo> products = service.selectProducts();
+		int start = service.getLimitStart(pg);
+		int total = service.selectCountProducts();
+		int pageEnd = service.getPageEnd(total);
+		
+		List<ProductsVo> products = service.selectProducts(start);
 		model.addAttribute("products", products);
+		model.addAttribute("pageEnd", pageEnd);
+		model.addAttribute("currentPg", pg);
 		
 		return "/admin/product/list";
 	}

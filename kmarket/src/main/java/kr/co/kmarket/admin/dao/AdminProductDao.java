@@ -11,7 +11,10 @@ public interface AdminProductDao {
 		
 	public void insertProduct(ProductsVo vo); 
 	public ProductsVo selectProduct(); 
-	public List<ProductsVo> selectProducts(); 
+	public List<ProductsVo> selectProducts(int start);
+	
+	public int selectCountProducts();
+	
 	public void updateProduct(); 
 	public void deleteProduct(); 
 	
