@@ -9,7 +9,8 @@ import kr.co.kmarket.vo.ProductsVo;
 @Repository
 public interface AdminProductDao {
 		
-	public void insertProduct(ProductsVo vo); 
+	public void insertProduct(ProductsVo vo);
+	
 	public ProductsVo selectProduct(); 
 	public List<ProductsVo> selectProducts(int start);
 	
