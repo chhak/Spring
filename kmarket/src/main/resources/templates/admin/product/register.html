@@ -3,22 +3,6 @@
 	  layout:decorate="/layout/layout_admin.html">
 	  
 <section id="admin-product-register" layout:fragment="content">
-	<script>
-		// 상품분류 select 기능구현
-		$(function(){
-			
-			var select1 = $('select[name=category1]');
-			var select2 = $('select[name=category2]');
-			
-			var cate1Url = "/kmarket/admin/product/cate1";
-			
-			$.get(cate1Url, function(cate1List){
-				$.each(cate1List, function(i, data){
-					select1.append("<option value='"+data.code1+"'>"+data.title+"</option>");
-				});
-			});
-		});
-	</script>	
     <nav>
         <h3>상품등록</h3>
         <p>

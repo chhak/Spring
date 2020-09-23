@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.kmarket.admin.persistence.AdminCategory1Repo;
+import kr.co.kmarket.admin.persistence.AdminCategory2Repo;
 import kr.co.kmarket.admin.service.AdminProductService;
 import kr.co.kmarket.vo.Category1Vo;
+import kr.co.kmarket.vo.Category2Vo;
 import kr.co.kmarket.vo.ProductsVo;
 
 @Controller
@@ -18,9 +20,10 @@ public class AdminProductController {
 
 	@Autowired
 	private AdminProductService service;
-	
 	@Autowired
 	private AdminCategory1Repo cate1Repo;
+	@Autowired
+	private AdminCategory2Repo cate2Repo;
 	
 	@GetMapping("/admin/product/list")
 	public String list(Model model, String pg) {
@@ -48,9 +51,11 @@ public class AdminProductController {
 		return cate1Repo.findAll();
 	}
 	
-	
-	
-	
+	@ResponseBody
+	@GetMapping("/admin/product/cate2")
+	public List<Category2Vo> getCate2(int code1) {
+		return cate2Repo.findByCode1OrderBySeq(code1);
+	}
 }
 
 
