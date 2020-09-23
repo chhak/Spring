@@ -67,6 +67,7 @@
             <a th:href="@{/admin/product/list(pg=${num})}"
 			   th:each="num:${#numbers.sequence(1, pageEnd)}"                
                th:class="${#strings.equals(num, currentPg) ? 'on' : ''}">[[${num}]]</a>
+               
         </span>
         <span class="next">
             <a href="#">다음&nbsp;></a>
