@@ -14,23 +14,6 @@
 		SELECT COUNT(*) FROM `km_products`;
 	</select>
 
-	<insert id="insertProduct">
-		INSERT INTO `km_products` SET
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},
-			`cate1`=#{cate1},		
-	</insert>
-
 	<!-- 
 	<insert id="insertUser">
 		INSERT INTO `USER3` VALUES (#{uid}, #{name}, #{hp}, #{age});		

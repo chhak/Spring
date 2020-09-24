@@ -1,11 +1,17 @@
 package kr.co.kmarket.admin.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.kmarket.admin.dao.AdminProductDao;
+import kr.co.kmarket.admin.persistence.AdminProductsRepo;
 import kr.co.kmarket.vo.ProductsVo;
 
 @Service
@@ -14,8 +20,11 @@ public class AdminProductService {
 	@Autowired
 	private AdminProductDao dao;
 	
+	@Autowired
+	private AdminProductsRepo repo;
+	
 	public void insertProduct(ProductsVo vo) {
-		dao.insertProduct(vo);
+		repo.save(vo);
 	} 
 	public ProductsVo selectProduct() {
 		return dao.selectProduct();
@@ -65,4 +74,45 @@ public class AdminProductService {
 		return (total - start) + 1;
 	}
 	
+	
+	public ProductsVo uploadThumb(ProductsVo vo) {
+		
+		// 썸네일 업로드
+		String path = new File("src/main/resources/static/thumb/").getAbsolutePath();
+		
+		MultipartFile[] files = {vo.getFile1(), vo.getFile2(), vo.getFile3(), vo.getFile4()};
+		
+		for(MultipartFile file : files) {
+			
+			if(!file.isEmpty()) {
+				
+				String name = file.getOriginalFilename();
+				String ext = name.substring(name.lastIndexOf("."));
+				
+				String uName = UUID.randomUUID().toString()+ext;
+				String fullPath = path+"/"+uName;
+				
+				try {
+					file.transferTo(new File(fullPath));
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		
+		return vo;
+	}
 }
+
+
+
+
+
+
+
+
+
