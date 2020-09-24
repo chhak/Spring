@@ -37,6 +37,11 @@ public class AdminProductService {
 		return dao.selectProducts(start);
 	}
 	
+	public List<ProductsVo> selectProductsBySearch(int start, String opt, String keyword){
+		return dao.selectProductsBySearch(start, opt, keyword);
+	}
+	
+	
 	public void updateProduct() {
 		dao.updateProduct();
 	}

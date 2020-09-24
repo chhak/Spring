@@ -43,6 +43,23 @@ public class AdminProductController {
 	@Autowired
 	private AdminCategory2Repo cate2Repo;
 	
+	
+	@GetMapping("/admin/product/search")
+	public String search(String pg, String keyword, String opt, Model model) {
+		
+		int start = service.getLimitStart(pg);
+		int total = service.selectCountProducts();
+		int pageEnd = service.getPageEnd(total);
+		
+		List<ProductsVo> products = service.selectProductsBySearch(start, opt, keyword);
+		model.addAttribute("products", products);
+		model.addAttribute("pageEnd", pageEnd);
+		model.addAttribute("currentPg", pg);
+		
+		return "/admin/product/list";
+	}
+	
+	
 	@GetMapping("/admin/product/list")
 	public String list(Model model, String pg) {
 		
