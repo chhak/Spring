@@ -82,7 +82,11 @@ public class AdminProductService {
 		
 		MultipartFile[] files = {vo.getFile1(), vo.getFile2(), vo.getFile3(), vo.getFile4()};
 		
-		for(MultipartFile file : files) {
+		
+		
+		for(int i=0 ; i<4 ; i++) {
+			
+			MultipartFile file = files[i];
 			
 			if(!file.isEmpty()) {
 				
@@ -94,6 +98,12 @@ public class AdminProductService {
 				
 				try {
 					file.transferTo(new File(fullPath));
+					
+					if(i==0) vo.setThumb1(uName);
+					if(i==1) vo.setThumb2(uName);
+					if(i==2) vo.setThumb3(uName);
+					if(i==3) vo.setDetail(uName);
+					
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -101,9 +111,6 @@ public class AdminProductService {
 				}
 			}
 		}
-		
-		
-		
 		return vo;
 	}
 }

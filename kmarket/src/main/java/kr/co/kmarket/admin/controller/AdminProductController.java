@@ -66,14 +66,11 @@ public class AdminProductController {
 	@PostMapping("/admin/product/register")
 	public String register(ProductsVo vo, HttpServletRequest req) throws Exception {
 		
-		
-		service.uploadThumb(vo);
-		
 		vo.setIp(req.getRemoteAddr());
 		vo.setRdate(LocalDateTime.now().toString());
 		
+		vo = service.uploadThumb(vo);
 		service.insertProduct(vo);
-		
 		
 		return "redirect:/admin/product/register";
 	}
