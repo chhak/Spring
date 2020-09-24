@@ -2,6 +2,9 @@ package kr.co.kmarket.admin.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
@@ -74,15 +77,13 @@ public class AdminProductService {
 		return (total - start) + 1;
 	}
 	
+	@Value("${upload.path}")
+	private String uploadPath;
 	
 	public ProductsVo uploadThumb(ProductsVo vo) {
-		
 		// 썸네일 업로드
-		String path = new File("src/main/resources/static/thumb/").getAbsolutePath();
-		
+		String path = new File(uploadPath).getAbsolutePath();
 		MultipartFile[] files = {vo.getFile1(), vo.getFile2(), vo.getFile3(), vo.getFile4()};
-		
-		
 		
 		for(int i=0 ; i<4 ; i++) {
 			
@@ -94,10 +95,14 @@ public class AdminProductService {
 				String ext = name.substring(name.lastIndexOf("."));
 				
 				String uName = UUID.randomUUID().toString()+ext;
-				String fullPath = path+"/"+uName;
+				String fullPath = path+"/"+vo.getCate1()+"/"+vo.getCate2()+"/";
+				
 				
 				try {
-					file.transferTo(new File(fullPath));
+					Path root = Paths.get(fullPath);
+					Files.createDirectories(root);
+					
+					file.transferTo(new File(fullPath+uName));
 					
 					if(i==0) vo.setThumb1(uName);
 					if(i==1) vo.setThumb2(uName);
