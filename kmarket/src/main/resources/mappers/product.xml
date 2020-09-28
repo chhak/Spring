@@ -30,6 +30,13 @@
 		</if>
 		LIMIT ${start}, 10;
 	</select>
+	
+	<delete id="deleteProduct" parameterType="int">
+		DELETE FROM `km_products` WHERE `code` IN
+		<foreach collection="array" item="code" open="(" separator="," close=")">
+			#{code}	
+		</foreach>
+	</delete>
 
 	<!-- 
 	<insert id="insertUser">
