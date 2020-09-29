@@ -13,6 +13,7 @@ public interface MainDao {
 	public List<Category1Vo> selectCate1();
 	public List<ProductsVo> selectHitProduct();
 	public List<ProductsVo> selectBestProduct();
+	public List<ProductsVo> selectRecProduct();
 	
 	
 }

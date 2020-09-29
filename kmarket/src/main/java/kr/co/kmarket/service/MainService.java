@@ -24,5 +24,8 @@ public class MainService {
 	public List<ProductsVo> selectBestProduct() {
 		return dao.selectBestProduct();
 	}
+	public List<ProductsVo> selectRecProduct() {
+		return dao.selectRecProduct();
+	}
 	
 }
