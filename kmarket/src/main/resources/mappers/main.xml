@@ -7,6 +7,27 @@
 	
 	<select id="selectCate1" resultType="kr.co.kmarket.vo.Category1Vo">
 		SELECT * FROM `km_category1` ORDER BY `code1`;
+		<!-- 
+		SELECT c1.`code1`, c2.`code2`, c1.`title` AS c1Tit, c2.`title` AS c2Tit
+		FROM `km_category1` AS c1
+		JOIN `km_category2` AS c2
+		ON c1.code1 = c2.code1
+		ORDER BY c1.`code1`, c2.`code2`;
+		-->
+	</select>
+
+	<select id="selectHitProduct" resultType="kr.co.kmarket.vo.ProductsVo">
+		SELECT *, Floor(price*(1-discount/100)) AS salePrice 
+		FROM `km_products` 
+		ORDER BY `hit` DESC 
+		LIMIT 8;
+	</select>
+	
+	<select id="selectBestProduct" resultType="kr.co.kmarket.vo.ProductsVo">
+		SELECT *, Floor(price*(1-discount/100)) AS salePrice 
+		FROM `km_products` 
+		ORDER BY `sold` DESC 
+		LIMIT 5;
 	</select>
 
 

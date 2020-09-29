@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import kr.co.kmarket.service.MainService;
 import kr.co.kmarket.vo.Category1Vo;
+import kr.co.kmarket.vo.ProductsVo;
 
 @Controller
 public class MainController {
@@ -20,7 +21,12 @@ public class MainController {
 	public String index(Model model) {
 		
 		List<Category1Vo> cate1List = service.selectCate1();
+		List<ProductsVo> hitList = service.selectHitProduct();
+		List<ProductsVo> bestList = service.selectBestProduct();
+		
 		model.addAttribute("cate1List", cate1List);
+		model.addAttribute("hitList", hitList);
+		model.addAttribute("bestList", bestList);
 		
 		return "/index";
 	}
