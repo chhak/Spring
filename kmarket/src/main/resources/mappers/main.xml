@@ -36,6 +36,20 @@
 		ORDER BY `score` DESC 
 		LIMIT 8;
 	</select>
+	
+	<select id="selectNewProduct" resultType="kr.co.kmarket.vo.ProductsVo">
+		SELECT *, Floor(price*(1-discount/100)) AS salePrice 
+		FROM `km_products` 
+		ORDER BY `rdate` DESC 
+		LIMIT 8;
+	</select>
+	
+	<select id="selectDiscountProduct" resultType="kr.co.kmarket.vo.ProductsVo">
+		SELECT *, Floor(price*(1-discount/100)) AS salePrice 
+		FROM `km_products` 
+		ORDER BY `discount` DESC 
+		LIMIT 8;
+	</select>
 
 
 

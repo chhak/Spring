@@ -38,5 +38,17 @@ public class MainController {
 		return service.selectRecProduct();
 	}
 	
+	@ResponseBody
+	@GetMapping("/main/newItems")
+	public List<ProductsVo> newItems() {
+		return service.selectNewProduct();
+	}
+	
+	@ResponseBody
+	@GetMapping("/main/discountItems")
+	public List<ProductsVo> discountItems() {
+		return service.selectDiscountProduct();
+	}
+	
 	
 }
