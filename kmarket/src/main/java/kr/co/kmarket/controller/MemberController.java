@@ -1,6 +1,7 @@
 package kr.co.kmarket.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -17,9 +18,15 @@ public class MemberController {
 	}
 	
 	@GetMapping("/member/signup")
-	public String signup() {
+	public String signup(String type, Model model) {
+		
+		model.addAttribute("type", type);
+		
 		return "/member/signup";
 	}
+	
+	
+	
 	
 	@GetMapping("/member/register")
 	public String register() {
