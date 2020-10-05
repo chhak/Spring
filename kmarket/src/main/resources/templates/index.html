@@ -39,8 +39,15 @@
 							
 							dom.find('h2').text(item.name);
 							dom.find('p').text(item.descript);
-							dom.find('.org_price > del').text(item.price);
-							dom.find('.org_price > span').text(item.discount);
+							dom.find('.org_price > del').text(item.price.toLocaleString());
+							dom.find('.org_price > span').text(item.discount+'%');
+							
+							dom.find('.dis_price > ins').text(item.salePrice.toLocaleString());
+							
+							if(item.delivery > 0){
+								dom.find('.dis_price > span').remove();	
+							}
+							
 							$('.recommend').append(dom);
 							
 						});
