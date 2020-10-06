@@ -22,14 +22,13 @@ public class MainController {
 	@GetMapping(value={"/", "/index"})
 	public String index(Model model) {
 		
-		List<CategoriesVo> cateList = service.selectCategories();
+		List<CategoriesVo> cate1List = service.selectCategories();
 		List<ProductsVo> hitList = service.selectHitProduct();
 		List<ProductsVo> bestList = service.selectBestProduct();
 		
-		//model.addAttribute("cateList", cateList);
-		System.out.println("길이1 : "+cateList.size());
-		System.out.println("길이2 : "+cateList.get(1).getCate2List().size());
-		
+		model.addAttribute("cate1List", cate1List);
+		//System.out.println("길이1 : "+cateList.size());
+		//System.out.println("길이2 : "+cateList.get(2).getCate2List().size());  
 		
 		model.addAttribute("hitList", hitList);
 		model.addAttribute("bestList", bestList);
