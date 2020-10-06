@@ -1,5 +1,12 @@
 package kr.co.kmarket.dao;
 
-public class MemberDao {
+import org.springframework.stereotype.Repository;
 
+import kr.co.kmarket.vo.ResultVo;
+
+@Repository
+public interface MemberDao {
+
+	public ResultVo selectCountUid(String uid);
+	
 }

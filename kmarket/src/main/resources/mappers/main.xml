@@ -4,19 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.kmarket.dao.MainDao">
-	<!-- 
+	
 	<resultMap id="categoriesMap" type="kr.co.kmarket.vo.CategoriesVo">
 	    <result property="code1" column="code1" />
 	    <result property="title" column="title" />
 		
-	    <collection property="kr.co.kmarket.vo.Category2Vo" ofType="categoriesMap">
-	         <result property="seq" column="seq" />
+	    <collection property="cate2List" ofType="kr.co.kmarket.vo.Category2Vo">
+	         <id property="seq" column="seq" />
 	         <result property="code1" column="code1" />
 	         <result property="code2" column="code2" />
 	         <result property="title" column="title" />
 	    </collection>
 	</resultMap>
-	 -->
+	
 	<select id="selectCategories" parameterType="kr.co.kmarket.vo.CategoriesVo" resultMap="categoriesMap">
 		<!-- SELECT * FROM `km_category1` ORDER BY `code1`; -->
 		SELECT c1.`code1`, c2.`code2`, c1.`title` AS tit1, c2.`title` AS tit2

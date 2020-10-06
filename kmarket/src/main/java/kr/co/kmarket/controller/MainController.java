@@ -27,7 +27,8 @@ public class MainController {
 		List<ProductsVo> bestList = service.selectBestProduct();
 		
 		//model.addAttribute("cateList", cateList);
-		System.out.println("길이 : "+cateList.size());
+		System.out.println("길이1 : "+cateList.size());
+		System.out.println("길이2 : "+cateList.get(1).getCate2List().size());
 		
 		
 		model.addAttribute("hitList", hitList);
