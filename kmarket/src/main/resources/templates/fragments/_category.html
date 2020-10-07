@@ -18,7 +18,7 @@
           </a>
           <ol>
               <li th:each="cate2:${cate1.cate2List}">
-              	<a th:href="@{/shop/list(cate1=${cate2.code1}, cate2=${cate2.code2})}">[[${cate2.title}]]</a>
+              	<a th:href="@{/shop/list(cate1=${cate2.code1}, cate2=${cate2.code2}, sort=0)}">[[${cate2.title}]]</a>
               </li>
           </ol>
       </li>
