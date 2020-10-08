@@ -17,6 +17,10 @@ public class ShopService {
 	public List<ProductsVo> selectProducts(int cate1, int cate2, int sort){
 		return dao.selectProducts(cate1, cate2, sort);
 	}
+	
+	public ProductsVo selectProduct(int code) {
+		return dao.selectProduct(code);
+	}
 }
 
 

@@ -44,7 +44,11 @@ public class ShopController {
 	}
 	
 	@GetMapping("/shop/view")
-	public String view() {
+	public String view(int code, Model model) {
+		
+		ProductsVo vo = service.selectProduct(code);
+		model.addAttribute(vo);
+		
 		return "/shop/view";
 	}
 	

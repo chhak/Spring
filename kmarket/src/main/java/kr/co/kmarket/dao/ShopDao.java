@@ -11,4 +11,6 @@ public interface ShopDao {
 
 	public List<ProductsVo> selectProducts(int cate1, int cate2, int sort);
 	
+	public ProductsVo selectProduct(int code);
+	
 }

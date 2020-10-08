@@ -16,6 +16,12 @@
 		<if test="sort == 6">ORDER BY `rdate` DESC</if>
 	</select>
 	
+	<select id="selectProduct" resultType="kr.co.kmarket.vo.ProductsVo">
+		SELECT *, Floor(price*(1-discount/100)) AS salePrice 
+		FROM `km_products`
+		WHERE `code`=#{code};
+	</select>
+	
 	<!-- 
 	<insert id="insertUser">
 		INSERT INTO `USER3` VALUES (#{uid}, #{name}, #{hp}, #{age});		
