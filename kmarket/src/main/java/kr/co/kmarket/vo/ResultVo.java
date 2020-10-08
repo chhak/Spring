@@ -9,5 +9,7 @@ public class ResultVo {
 
 	private int result;
 	
-	
+	public ResultVo(int result) {
+		this.result = result;
+	}
 }

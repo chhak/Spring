@@ -8,11 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.kmarket.service.MainService;
 import kr.co.kmarket.service.ShopService;
 import kr.co.kmarket.vo.CategoriesVo;
+import kr.co.kmarket.vo.ProductCartVo;
 import kr.co.kmarket.vo.ProductsVo;
+import kr.co.kmarket.vo.ResultVo;
 
 @Controller
 public class ShopController {
@@ -43,6 +47,7 @@ public class ShopController {
 	@GetMapping("/shop/view")
 	public String view(int code, Model model, HttpSession sess) {
 		
+		sess.getAttribute("");
 		ProductsVo vo = service.selectProduct(code);
 		String[] tits = service.getTitles(sess, vo.getCate1(), vo.getCate2());
 		
@@ -56,6 +61,14 @@ public class ShopController {
 	@GetMapping("/shop/cart")
 	public String cart() {
 		return "/shop/cart";
+	}
+	
+	@ResponseBody
+	@PostMapping("/shop/cart")
+	public ResultVo cart(ProductCartVo vo) {
+		
+		int result = service.insertCart(vo);
+		return new ResultVo(result);
 	}
 	
 	@GetMapping("/shop/order")

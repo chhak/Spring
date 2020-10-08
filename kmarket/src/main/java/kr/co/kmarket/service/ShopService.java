@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.kmarket.dao.ShopDao;
 import kr.co.kmarket.vo.CategoriesVo;
+import kr.co.kmarket.vo.ProductCartVo;
 import kr.co.kmarket.vo.ProductsVo;
 
 @Service
@@ -23,6 +24,10 @@ public class ShopService {
 	
 	public ProductsVo selectProduct(int code) {
 		return dao.selectProduct(code);
+	}
+	
+	public int insertCart(ProductCartVo vo) {
+		return dao.insertCart(vo);
 	}
 	
 	public String[] getTitles(HttpSession sess, int cate1, int cate2) {
