@@ -29,13 +29,10 @@ public class ShopController {
 	public String list(int cate1, int cate2, int sort, Model model, HttpSession sess) {
 		
 		List<ProductsVo> items = service.selectProducts(cate1, cate2, sort);
+		String[] tits = service.getTitles(sess, cate1, cate2);
 		
-		List<CategoriesVo> categories = (List<CategoriesVo>) sess.getAttribute("cate1List");
-		String tit1 = categories.get(cate1-1).getTitle();
-		String tit2 = categories.get(cate1-1).getCate2List().get(cate2-1).getTitle();
-		
-		model.addAttribute("tit1", tit1);
-		model.addAttribute("tit2", tit2);
+		model.addAttribute("tit1", tits[0]);
+		model.addAttribute("tit2", tits[1]);
 		model.addAttribute("cate1", cate1);
 		model.addAttribute("cate2", cate2);
 		model.addAttribute("items", items);
@@ -44,9 +41,13 @@ public class ShopController {
 	}
 	
 	@GetMapping("/shop/view")
-	public String view(int code, Model model) {
+	public String view(int code, Model model, HttpSession sess) {
 		
 		ProductsVo vo = service.selectProduct(code);
+		String[] tits = service.getTitles(sess, vo.getCate1(), vo.getCate2());
+		
+		model.addAttribute("tit1", tits[0]);
+		model.addAttribute("tit2", tits[1]);
 		model.addAttribute(vo);
 		
 		return "/shop/view";

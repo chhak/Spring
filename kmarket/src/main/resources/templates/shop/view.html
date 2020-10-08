@@ -3,11 +3,38 @@
 	  layout:decorate="/layout/layout_shop.html">
 
 	<!-- 상품 상세페이지 -->
-  <section id="view" layout:fragment="content">                
+  <section id="view" layout:fragment="content">
+  	<script>
+  		// 상품수량 +, - 기능구현
+  		$(document).ready(function(){
+  			
+  			var btnPlus  = $('.option > input[name=plus]');
+			var btnMinus = $('.option > input[name=minus]');
+			var txtCount = $('.option > input[name=count]');
+  			
+			btnPlus.click(function(){
+				var count = txtCount.val();			
+				var num = parseInt(count) + 1;				
+				txtCount.val(num);
+			});
+			btnMinus.click(function(){
+				var count = txtCount.val();			
+				var num = parseInt(count) - 1;
+				
+				if(num <= 0){
+					alert('최소 수량은 1개 입니다.');
+					return;
+				}
+				txtCount.val(num);
+			});  			
+  			
+  		});
+  	</script>
+  	
       <nav>
           <h1>[[${productsVo.name}]]</h1>
           <p>
-              HOME > <span>패션·의류·뷰티</span> > <strong>남성의류</strong>
+              HOME > <span>[[${tit1}]]</span> > <strong>[[${tit2}]]</strong>
           </p>
       </nav>
       <section>
@@ -50,20 +77,19 @@
 				  <div class="option">
 				  	<span>상품수량</span>
 				  	<input type="button" name="minus" value="-"/>
-				  	<input type="text"   name="count" value="1"/>
+				  	<input type="text"   name="count" value="1" readonly="readonly"/>
 				  	<input type="button" name="plus"  value="+"/>
 				  </div>
                   
                   <div class="total">
-                      <span>35,000</span>
+                      <span>[[${#numbers.formatInteger(productsVo.salePrice, 3, 'COMMA')}]]</span>
                       <em>총 상품금액</em>
                   </div>
                   
                   <div class="btn">
-                  	<input type="button" value="장바구니"/>
-                  	<input type="button" value="구매하기"/>
+                  	<input type="button" class="cart"  value="장바구니"/>
+                  	<input type="button" class="order" value="구매하기"/>
                   </div>
-                  
               </div>
           </article>
           <article class="detail">
@@ -73,7 +99,6 @@
               <!-- 상품상세페이지 이미지 -->
               <img th:src="@{'/thumb/'+${productsVo.cate1}+'/'+${productsVo.cate2}+'/'+${productsVo.detail}}" alt="상품 상세 이미지"/>
           </article>
-
           <article class="notice">
               <nav>
                   <h1>상품 정보 제공 고시</h1>
