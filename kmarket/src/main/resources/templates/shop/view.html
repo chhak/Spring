@@ -5,14 +5,17 @@
 	<!-- 상품 상세페이지 -->
   <section id="view" layout:fragment="content">
   <script th:src="@{/js/productOptionCount.js}"></script>
-  <script>
+  <script th:inline="javascript">
   	// 장바구니 버튼 구현
   	$(function(){
   		
   		$('.btn > .cart').click(function(){
   			
-  			if(로그인을 안했으면){
+  			var member = [[${member}]]
+  			
+  			if(member == null){
   				alert('로그인을 먼저 하십시요.');
+  				location.replace('/kmarket/member/login');
   				return;
   			}
   			

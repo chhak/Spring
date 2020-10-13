@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.kmarket.service.MainService;
 import kr.co.kmarket.service.ShopService;
 import kr.co.kmarket.vo.CategoriesVo;
+import kr.co.kmarket.vo.MemberVo;
 import kr.co.kmarket.vo.ProductCartVo;
 import kr.co.kmarket.vo.ProductsVo;
 import kr.co.kmarket.vo.ResultVo;
@@ -47,13 +48,15 @@ public class ShopController {
 	@GetMapping("/shop/view")
 	public String view(int code, Model model, HttpSession sess) {
 		
-		sess.getAttribute("");
+		MemberVo member = (MemberVo) sess.getAttribute("member");
+		
 		ProductsVo vo = service.selectProduct(code);
 		String[] tits = service.getTitles(sess, vo.getCate1(), vo.getCate2());
 		
 		model.addAttribute("tit1", tits[0]);
 		model.addAttribute("tit2", tits[1]);
 		model.addAttribute(vo);
+		model.addAttribute("member", member);
 		
 		return "/shop/view";
 	}
