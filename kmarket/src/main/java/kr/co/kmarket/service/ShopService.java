@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.kmarket.dao.ShopDao;
+import kr.co.kmarket.vo.CartTotalInfoVo;
 import kr.co.kmarket.vo.CategoriesVo;
 import kr.co.kmarket.vo.ProductCartVo;
 import kr.co.kmarket.vo.ProductsVo;
@@ -49,6 +50,28 @@ public class ShopService {
 		
 		String tits[] = {tit1, tit2};
 		return tits;
+	}
+	
+	public CartTotalInfoVo cartTotalInfo(List<ProductCartVo> items) {
+		
+		int count = items.size();
+		int price = 0;
+		int sale = 0;
+		int delivery = 0;
+		int point = 0;
+		int total = 0;
+		
+		
+		for(ProductCartVo item : items) {
+			price    += item.getPrice() * item.getCount();
+			sale     += (item.getPrice() * item.getDiscount()/100) * item.getCount();
+			delivery += item.getDelivery();
+			point    += item.getPoint();
+			total    += item.getTotal();
+		}
+		
+		return new CartTotalInfoVo(count, price, sale, delivery, point, total);
+		
 	}
 	
 }
