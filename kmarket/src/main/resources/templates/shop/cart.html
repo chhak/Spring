@@ -4,7 +4,57 @@
 
   <!-- 장바구니 -->
   <section id="cart" layout:fragment="content">
-    
+  	
+  	<script>
+  		$(function(){
+  			
+  			// 전체체크박스 클릭
+  			$('input[name=all]').change(function(){
+  				
+  				var isChecked = $(this).is(':checked');
+  				
+  				if(isChecked){
+  					// 전체 체크
+  					$('input[name=chk]').prop('checked', true);
+  				}else{
+  					// 전체 체크해제
+  					$('input[name=chk]').prop('checked', false);
+  				}
+  			});
+  			
+  			// 선택삭제 버튼 클릭
+  			$('input[name=del]').click(function(){
+  				
+  				var codes = [];
+  				
+  				$('input[name=chk]:checked').each(function(i){
+  					codes[i] = $(this).val();
+  				});
+  				
+  				if(codes.length == 0){
+  					alert('최소 1개 이상의 상품을 선택하세요.');
+  					return;
+  				}
+  				
+  				// 서버로 상품코드 전송
+  				var url = '/kmarket/shop/cartDel';
+  				var param = {'codes': codes};
+  				
+  				$.ajax({
+					url: url,
+					type: 'post',
+					data: param,
+					traditional: true, // jquery 배열 전송시 반드시 추가되는 옵션
+					dataType: 'text',
+					success: function(data){
+						alert(data);
+					}
+				});
+  				
+  			});
+  		});	
+  	</script>
+  	
     <!-- 제목, 페이지 네비게이션 -->
     <nav>
       <h1>장바구니</h1>
@@ -33,7 +83,7 @@
               <td colspan="7">장바구니에 상품이 없습니다.</td>
             </tr>
             <tr th:each="item:${items}">
-              <td><input type="checkbox" name=""></td>
+              <td><input type="checkbox" name="chk" th:value="${item.code}"></td>
               <td>
                 <article>
                   <a href="#">

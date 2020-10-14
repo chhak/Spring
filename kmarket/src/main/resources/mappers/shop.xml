@@ -44,6 +44,16 @@
 		WHERE `uid`=#{uid};
 	</select>
 	
+	<delete id="deleteCart" parameterType="int">
+		DELETE FROM `km_products_cart` 
+		WHERE		
+		`uid`=#{uid} AND
+		`code` IN
+		<foreach collection="codes" item="code" open="(" separator="," close=")">
+			#{code}	
+		</foreach>
+	</delete>
+	
 	<!-- 
 	<insert id="insertUser">
 		INSERT INTO `USER3` VALUES (#{uid}, #{name}, #{hp}, #{age});		

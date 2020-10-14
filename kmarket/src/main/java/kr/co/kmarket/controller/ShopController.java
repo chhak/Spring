@@ -90,6 +90,16 @@ public class ShopController {
 		return new ResultVo(result);
 	}
 	
+	@ResponseBody
+	@PostMapping("/shop/cartDel")
+	public int cartDel(HttpSession sess, int[] codes) {
+		
+		MemberVo member = (MemberVo) sess.getAttribute("member");
+		int result = service.deleteCart(member.getUid(), codes);
+		
+		return result;
+	}
+	
 	@GetMapping("/shop/order")
 	public String order() {
 		return "/shop/order";
