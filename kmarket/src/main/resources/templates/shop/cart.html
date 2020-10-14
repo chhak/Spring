@@ -37,8 +37,9 @@
   				}
   				
   				// 서버로 상품코드 전송
+  				var uid = $('input[name=uid]').val();
   				var url = '/kmarket/shop/cartDel';
-  				var param = {'codes': codes};
+  				var param = {'uid': uid, 'codes': codes};
   				
   				$.ajax({
 					url: url,
@@ -47,11 +48,17 @@
 					traditional: true, // jquery 배열 전송시 반드시 추가되는 옵션
 					dataType: 'text',
 					success: function(data){
-						alert(data);
+						location.href = '/kmarket/shop/cart';
 					}
 				});
-  				
+  			});// 선택삭제 버튼 끝
+			
+  			
+  			// 주문하기 버튼
+  			$('input[name=order]').click(function(){
+				// 
   			});
+  			
   		});	
   	</script>
   	
@@ -65,6 +72,7 @@
     
     <section>
       <form action="#">
+      	<input type="hidden" name="uid" th:value="${session.member.uid}" />
         <table>
           <thead>
             <tr>
@@ -137,7 +145,7 @@
           <td>[[${#numbers.formatInteger(totalInfo.total, 3, 'COMMA')}]]</td>
         </tr>
       </table>
-      <input type="button" name="" value="주문하기">
+      <input type="button" name="order" value="주문하기"/>
 
     </div>
   </section>

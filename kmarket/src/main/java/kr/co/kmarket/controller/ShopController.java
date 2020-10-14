@@ -92,12 +92,8 @@ public class ShopController {
 	
 	@ResponseBody
 	@PostMapping("/shop/cartDel")
-	public int cartDel(HttpSession sess, int[] codes) {
-		
-		MemberVo member = (MemberVo) sess.getAttribute("member");
-		int result = service.deleteCart(member.getUid(), codes);
-		
-		return result;
+	public int cartDel(String uid, int[] codes) {
+		return service.deleteCart(uid, codes);
 	}
 	
 	@GetMapping("/shop/order")
