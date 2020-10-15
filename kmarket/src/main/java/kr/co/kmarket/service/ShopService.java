@@ -78,6 +78,9 @@ public class ShopService {
 			total    += item.getTotal();
 		}
 		
+		// 배송비와 전체금액 최종합산
+		total += delivery;
+		
 		return new OrderTotalInfoVo(count, price, sale, delivery, point, total);
 		
 	}

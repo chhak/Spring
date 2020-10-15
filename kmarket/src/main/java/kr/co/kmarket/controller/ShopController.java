@@ -108,6 +108,15 @@ public class ShopController {
 		return "/shop/order";
 	}
 	
+	@PostMapping("/shop/order")
+	public String order(String orderer, String hp) {
+		
+		System.out.println("orderer : "+orderer);
+		System.out.println("hp : "+hp);
+		
+		return "redirect:/shop/order-complete";
+	}
+	
 	@GetMapping("/shop/order-complete")
 	public String orderComplete() {
 		return "/shop/order-complete";
