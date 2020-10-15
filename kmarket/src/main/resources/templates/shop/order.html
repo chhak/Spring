@@ -4,6 +4,15 @@
 
 <!-- 주문결제 -->
 <section id="order" layout:fragment="content">
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script th:src="@{/js/zipcode.js}"></script>
+  <script>
+  	$(function(){
+  		$('.btnZip').click(function(){
+  			zipcode();
+  		});
+  	});
+  </script>
   
   <!-- 제목, 페이지 네비게이션 -->
   <nav>
@@ -55,32 +64,32 @@
               <table>
                 <tr>
                   <td>주문자</td>
-                  <td><input type="text" name="orderer" /></td>
+                  <td><input type="text" name="orderer" th:value="${session.member.name}" /></td>
                 </tr>
                 <tr>
                   <td>휴대폰</td>
                   <td>
-                    <input type="text" name="hp" />
+                    <input type="text" name="hp" th:value="${session.member.hp}"/>
                     <span>- 포함 입력</span>
                   </td>
                 </tr>
                 <tr>
                   <td>우편번호</td>
                   <td>
-                    <input type="text" name="zip"/>
-                    <input type="button" value="검색"/>
+                    <input type="text" id="zip" name="zip" th:value="${session.member.zip}"/>
+                    <input type="button" class="btnZip" value="검색"/>
                   </td>
                 </tr>
                 <tr>
                   <td>기본주소</td>
                   <td>
-                    <input type="text" name="addr1"/>
+                    <input type="text" id="addr1" name="addr1" th:value="${session.member.addr1}"/>
                   </td>
                 </tr>
                 <tr>
                   <td>상세주소</td>
                   <td>
-                    <input type="text" name="addr2"/>
+                    <input type="text" id="addr2" name="addr2" th:value="${session.member.addr2}"/>
                   </td>
                 </tr>
               </table>
@@ -90,7 +99,7 @@
                 <h1>할인정보</h1>
 
                 <div>
-                    <p>현재 포인트 : <span>7200</span>점</p>
+                    <p>현재 포인트 : <span>[[${session.member.point}]]</span>점</p>
                     <label>
                         <input type="text" name="point" />점
                         <input type="button" value="적용"/>
@@ -140,27 +149,27 @@
                 <table border="0">
                   <tr>
                     <td>총</td>
-                    <td>2 건</td>
+                    <td>[[${totalInfo.count}]] 건</td>
                   </tr>
                   <tr>
                     <td>상품금액</td>
-                    <td>27,000</td>
+                    <td>[[${#numbers.formatInteger(totalInfo.price, 3, 'COMMA')}]]</td>
                   </tr>
                   <tr>
                     <td>할인금액</td>
-                    <td>-1,000</td>
+                    <td>-[[${#numbers.formatInteger(totalInfo.sale, 3, 'COMMA')}]]</td>
                   </tr>
                   <tr>
                     <td>배송비</td>
-                    <td>0</td>
+                    <td>[[${#numbers.formatInteger(totalInfo.delivery, 3, 'COMMA')}]]</td>
                   </tr>
                   <tr>
                     <td>포인트 할인</td>
-                    <td>-1000</td>
+                    <td>0</td>
                   </tr>
                   <tr>
                     <td>전체주문금액</td>
-                    <td>25,000</td>
+                    <td>[[${#numbers.formatInteger(totalInfo.total, 3, 'COMMA')}]]</td>
                   </tr>
                   
                 </table>
