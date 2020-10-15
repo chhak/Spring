@@ -36,7 +36,7 @@
 		`rdate`=NOW();
 	</insert>
 	
-	<select id="selectCart" resultType="kr.co.kmarket.vo.ProductCartVo">
+	<select id="selectCart" resultType="kr.co.kmarket.vo.ProductsCartVo">
 		SELECT a.*, b.`cate1`, b.`cate2`, b.`thumb1` 
 		FROM `km_products_cart` AS a
 		JOIN `km_products` AS b
@@ -54,7 +54,7 @@
 	</delete>
 	
 	<!-- /shop/order -->
-	<select id="selectOrder" resultType="kr.co.kmarket.vo.ProductCartVo">
+	<select id="selectOrder" resultType="kr.co.kmarket.vo.ProductsCartVo">
 		SELECT a.*, b.`cate1`, b.`cate2`, b.`thumb1` 
 		FROM `km_products_cart` AS a
 		JOIN `km_products` AS b
