@@ -1,6 +1,8 @@
 package kr.co.kmarket.vo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -13,8 +15,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "km_products_order")
 public class ProductsOrderVo {
-
 	@Id
+	@GeneratedValue
 	private int seq;
 	private String uid;
 	private String products;
@@ -34,6 +36,7 @@ public class ProductsOrderVo {
 	private String addr2;
 	private String rdate;
 	
-	
+	@Transient
+	private int cate1;
 	
 }

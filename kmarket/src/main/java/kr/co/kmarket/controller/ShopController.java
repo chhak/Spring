@@ -3,6 +3,7 @@ package kr.co.kmarket.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.GeneratedValue;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,13 +115,13 @@ public class ShopController {
 		return "/shop/order";
 	}
 	
-	
 	@PostMapping("/shop/order")
 	public String order(ProductsOrderVo vo, int[] cartSeqs) {
 		
 		vo.setRdate(LocalDateTime.now().toString());	
 		
 		// 주문 테이블에 주문상품 입력
+		// ProductsOrderVo에 @GeneratedValue 붙여야지 ID값인 seq값을 얻을 수 있다.
 		ProductsOrderVo ordered = productsOrderRepo.save(vo);
 		
 		// 주문한 상품은 장바구니에서 삭제
